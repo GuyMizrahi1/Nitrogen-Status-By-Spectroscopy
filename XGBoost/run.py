@@ -5,7 +5,7 @@ from utils import plot_chosen_configurations_rmse, load_model, ensure_data_paths
     plot_feature_importances, plot_residuals
 
 
-def main(train: bool = False):
+def main(train: bool = True):
     parser = argparse.ArgumentParser(description="Train or load XGBoost model")
     parser.add_argument('--train', action='store_true', help="Train a new model")
     args = parser.parse_args()

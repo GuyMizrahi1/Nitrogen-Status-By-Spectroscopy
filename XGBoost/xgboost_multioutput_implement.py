@@ -1,5 +1,6 @@
 import os
 import joblib
+import random
 import itertools
 import numpy as np
 import pandas as pd
@@ -62,18 +63,21 @@ class XGBoostMultiOutput:
         return X, y
 
     def get_param_grid(self):
-        # Define a smaller hyperparameter grid with just 2 configurations
+        # Define the hyperparameter grid with a maximum of 100 configurations
         param_grid = {
-            "learning_rate": [0.01, 0.1],
-            "max_depth": [3, 5],
-            "n_estimators": [50],
-            "subsample": [0.8],
-            "colsample_bytree": [0.8],
-            "gamma": [0],
-            "reg_lambda": [1],
+            "learning_rate": [0.01, 0.1, 0.2],
+            "max_depth": [3, 5, 7],
+            "n_estimators": [50, 100, 200],
+            "subsample": [0.6, 0.8, 1.0],
+            "colsample_bytree": [0.6, 0.8, 1.0],
+            "gamma": [0, 0.1, 0.2],
+            "reg_lambda": [1, 2]
         }
         keys, values = zip(*param_grid.items())
         configurations = [dict(zip(keys, v)) for v in itertools.product(*values)]
+
+        # Randomly sample 100 configurations
+        configurations = random.sample(configurations, 100)
         return configurations
 
     def train_and_evaluate_by_rmse_per_configuration(self, params, X_train, y_train, X_val, y_val):
