@@ -121,7 +121,7 @@ create_json_file(sc_value_rmse, path + 'sc_value_rmse_cv10.json')
 create_json_file(st_value_rmse, path + 'st_value_rmse_cv10.json')
 
 
-# Fit model on all  of the data -  for saving only
+# Fit model on all of the data -  for saving only
 multi_PLSR.model.estimator.fit(dataset.X_train, dataset.Y_train)
 n_value_PLSR.model.fit(dataset.X_train, dataset.Y_train.iloc[:,0])
 sc_value_PLSR.model.fit(dataset.X_train, dataset.Y_train.iloc[:,1])
@@ -131,6 +131,7 @@ st_value_PLSR.model.fit(dataset.X_train, dataset.Y_train.iloc[:,2])
 rmses = multi_PLSR.evaluate()
 # save results
 create_json_file(rmses, path + 'multi_rmse_test.json')
+
 # save model
 import joblib
 joblib.dump(multi_PLSR.model.estimator, './models/multi_plsr.pkl')
