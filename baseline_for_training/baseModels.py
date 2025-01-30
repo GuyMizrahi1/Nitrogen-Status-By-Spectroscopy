@@ -1,7 +1,5 @@
 import numpy as np
 
-from Dataset import Dataset
-
 from sklearn.metrics import mean_squared_error
 
 class BaseModel:

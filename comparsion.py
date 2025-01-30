@@ -2,9 +2,9 @@ import numpy as np
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
-from constants_config import COLOR_PALETTE_FOR_PLSR, TARGET_VARIABLES
+from constants_config import TARGET_VARIABLES
 
-plsr_test_path = './PLSR/outputs/test/multi_rmse_test.json'
+plsr_test_path = './PLSR/outputs/test/pls_n_components_15.json'
 xgboost_test_path = './XGBoost/figures/test_scores.json'
 RF_test_path = './RF/models/test_results.json'
 
@@ -33,7 +33,7 @@ rf_test = {}
 for i,key in enumerate(keys):
     if i == 3:
         break
-    plsr_test[key] = plsr_data[i]/ranges[key]
+    plsr_test[key] = plsr_data[key]/ranges[key]
     xgboost_test[key] = xgboost_data[key]/ranges[key]
     rf_test[key] = rf_data[key]/ranges[key]
 
@@ -68,7 +68,7 @@ for container in ax.containers:
 # Adjust bin spaces
 plt.tight_layout()
 # Positioning the legend at the bottom between XGBoost and RF
-plt.legend(fontsize=12, loc='upper left', bbox_to_anchor=(0.21,0.8),ncol=1)
+plt.legend()
 
 plt.savefig("comparsion.png",dpi=600)
 

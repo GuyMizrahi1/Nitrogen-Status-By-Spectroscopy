@@ -4,6 +4,7 @@ import joblib
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 import numpy as np
+import json
 
 # Load dataset
 sys.path.append('../baseline_for_training')
@@ -26,8 +27,11 @@ errors = mean_squared_error(dataset.Y_test, plsr_model.predict(dataset.X_test),
 errorss = {}
 for idx,target in enumerate(dataset.Y_test.columns):
     rng = dataset.Y_test[target].max() - dataset.Y_test[target].min()
-    errorss[target] = np.sqrt(errors[idx])/rng
+    errorss[target] = np.sqrt(errors[idx])
 
-print(errorss)
+with open(os.path.join('./outputs',model_name.replace('.pkl','.json')),'w') as f:
+    json.dump(errorss,f)
+
+
 
 

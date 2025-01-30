@@ -15,9 +15,9 @@ def ensure_data_paths_exist(data_folder_path):
     train_path = os.path.join(data_folder_path, 'train_data.parquet')
     val_path = os.path.join(data_folder_path, 'validation_data.parquet')
     test_path = os.path.join(data_folder_path, 'test_data.parquet')
-    train_plsr_path = os.path.join(data_folder_path, 'train_data_plsr.parquet')
-    val_plsr_path = os.path.join(data_folder_path, 'validation_data_plsr.parquet')
-    test_plsr_path = os.path.join(data_folder_path, 'test_data_plsr.parquet')
+    train_plsr_path = os.path.join(data_folder_path, 'train_data_15_plsr.parquet')
+    val_plsr_path = os.path.join(data_folder_path, 'validation_data_15_plsr.parquet')
+    test_plsr_path = os.path.join(data_folder_path, 'test_data_15_plsr.parquet')
 
     return train_path, val_path, test_path, train_plsr_path, val_plsr_path, test_plsr_path
 
