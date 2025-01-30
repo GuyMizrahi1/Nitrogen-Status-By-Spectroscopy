@@ -28,8 +28,7 @@ dataset.X_train[dataset.X_train.columns] = X_scaler.fit_transform(dataset.X_trai
 dataset.X_val[dataset.X_val.columns] = X_scaler.transform(dataset.X_val.values)
 dataset.X_test[dataset.X_test.columns] = X_scaler.transform(dataset.X_test.values)
 
-
-X_train_plsr = multi_PLSR.x_scores_
+X_train_plsr = multi_PLSR._x_scores
 X_val_plsr = multi_PLSR.transform(dataset.X_val.reset_index(drop=True))
 X_test_plsr = multi_PLSR.transform(dataset.X_test.reset_index(drop=True))
 
@@ -60,3 +59,4 @@ from constants_config import DATA_FOLDER_PATH
 train_data_plsr.reset_index().to_parquet(os.path.join(DATA_FOLDER_PATH,'train_data_plsr.parquet'))
 val_data_plsr.reset_index().to_parquet(os.path.join(DATA_FOLDER_PATH,'validation_data_plsr.parquet'))
 test_data_plsr.reset_index().to_parquet(os.path.join(DATA_FOLDER_PATH,'test_data_plsr.parquet'))
+
